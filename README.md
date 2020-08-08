@@ -11,7 +11,7 @@ The aim of this project, one of the Web projects from the 42 / WeThinkCode_ curr
 ## Prerequisites
 
 Hypertube makes use of two servers. 
-- An apache server (in this case an bitnami local server)
+- An Apache server (in this case an bitnami local server)
 - A Node server.
 
 ### Apache Server
