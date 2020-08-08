@@ -81,7 +81,7 @@ Browse to site location
 
 In [Insert path to your MAMP/ WAMP / LAMP Directory ]/apache2/htdocs/Hypertube/setup.php  
 
-Change the password of `$password`, to the password chosen during the installation of bitnami server.
+Change the password of `$password`, to the password chosen during the installation of bitnami server - myphpAdmin password.
 
 ![Database_Configuration](./misc/images/MAMP/DBSETUP.png)
 
@@ -96,6 +96,15 @@ In the browser, navigate to
 ## Landing | Home page  
 <!-- ![Screenshot_Landingpage](./misc/images/) -->
 
+# APIs Used
+## Movie APIs
+- [TheMovieDB (TMDb)](https://www.themoviedb.org/documentation/api?language=en-US)
+- [The Open Movie Database (OMDb)](http://www.omdbapi.com/)
+
+## OAuthentication APIs
+- [Facebook](https://developers.facebook.com/docs/facebook-login/web)
+- [Google](https://developers.google.com/identity/sign-in/web/sign-in)
+- [42 API](https://api.intra.42.fr/apidoc)
 
 # Project Insight
 ## Project Brief
