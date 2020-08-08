@@ -79,9 +79,9 @@ Browse to site location
 
 ### Changing Hypertube Variables 
 
-In [Insert path to your MAMP/ WAMP / LAMP Directory ]/apache2/htdocs/Hypertube/config/database.php  
+In [Insert path to your MAMP/ WAMP / LAMP Directory ]/apache2/htdocs/Hypertube/setup.php  
 
-Change the password of `$password`, to the password chosen during from bitnami setup.
+Change the password of `$password`, to the password chosen during the installation of bitnami server.
 
 ![Database_Configuration](./misc/images/MAMP/DBSETUP.png)
 
