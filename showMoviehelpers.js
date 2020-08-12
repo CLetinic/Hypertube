@@ -94,7 +94,7 @@ function createMovieCard(moviedata)
 				else if (!(moviedata.Poster === 'N/A' || moviedata.Poster === undefined))
 					srcImage = moviedata.Poster;
 				else 
-					srcImage = "http://i67.tinypic.com/10fc1lg.jpg";	
+					srcImage = "./images/noImagePoster.svg";	
 
 				// AESTHETIC - This is just a font size chaninging effect for if the movie name is too long.
 				var titleSize;

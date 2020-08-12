@@ -285,8 +285,9 @@ session_start();
 		<div id="result" class="row">
 			
 		</div>
-		<div class="row">
-			<img id="loading" src="http://i68.tinypic.com/zk3gol.gif" style="margin-left: auto; margin-right: auto; display: none;" alt="Loading..." title="Loading..."/>
+		<div class="row row-centre">
+			<!-- <img id="loading" src="http://i68.tinypic.com/zk3gol.gif" style="margin-left: auto; margin-right: auto; display: none;" alt="Loading..." title="Loading..."/> -->
+			<div id="loading" class="lds-dual-ring"></div>
 		</div>
 		
 		<div class="row">
@@ -461,9 +462,21 @@ $(document).ready(function()
 		});
 
 		// SEARCH
-		//$('#searchbar').on('input', function(event) 
-		$('.fieldinput').change(function(event) 
+		$('.fieldinput').blur(function(event) 
 		{
+			searchOnFiledInput();
+		});
+
+		$('.fieldinput').keydown(function(event) 
+		{
+			searchOnFiledInput();
+		});
+
+		
+	});
+
+function searchOnFiledInput()
+{
 			$('#result').fadeOut();
 			$('#pagination-container').css("display", "none");
 			$('#loading').fadeOut(50);
@@ -554,10 +567,7 @@ $(document).ready(function()
 					showMovies(actionque+`&page=`+ pagination.pageNumber +``);
 				}
 			});
-		});
-
-		
-	});
+		}
 
 function getSortID(sortType)
 {
