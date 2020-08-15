@@ -32,12 +32,12 @@ async function getMovieDataPromise(result, pageType)
 
 		if (pageType == "info")
 		{	
-				result[i].Plot = moviedata.Plot;
-				result[i].Production = moviedata.Production;
-				result[i].Runtime = moviedata.Runtime;
-				result[i].Rated = moviedata.Rated; // age restriction
-				result[i].Website = moviedata.Website;
-			}
+			result[i].Plot = moviedata.Plot;
+			result[i].Production = moviedata.Production;
+			result[i].Runtime = moviedata.Runtime;
+			result[i].Rated = moviedata.Rated; // age restriction
+			result[i].Website = moviedata.Website;
+		}
 			
 	}
 	if (pageType == "info")
@@ -88,13 +88,19 @@ async function createMovieCard(moviedata)
 		yearRelease = 'N/A';
 
 	// check if there is a movie poster avaliable
-	var srcImage;
+	var srcImagePath;
 	if (!(moviedata.poster_path === null))
-		srcImage = "https://image.tmdb.org/t/p/w342" + moviedata.poster_path;
+		srcImagePath = "https://image.tmdb.org/t/p/w342" + moviedata.poster_path;
 	else if (!(moviedata.Poster === 'N/A' || moviedata.Poster === undefined))
-		srcImage = moviedata.Poster;
+		srcImagePath = moviedata.Poster;
 	else 
-		srcImage = "./images/noImagePoster.svg";	
+		srcImagePath = './images/noImagePoster.png'//"";
+
+		var srcImage;
+		if (srcImagePath != "")
+			srcImage = srcImagePath = `<img src="${srcImagePath}" style="width: 100%; height: 450px; spadding-top: 0.5rem;"/>`;
+		else 
+			srcImage =`<img src="${srcImagePath}" style="width: 100%; height: 450px; spadding-top: 0.5rem;"/>`
 
 	// AESTHETIC - This is just a font size chaninging effect for if the movie name is too long.
 	var titleSize;
@@ -124,7 +130,7 @@ async function createMovieCard(moviedata)
 			</div>
 			<i id="${"viewed" + moviedata.imdbID}" class="far fa-eye" style="float: right; font-size: large; display: none;"></i>
 			<br>
-			<img src="${srcImage}" style="width: 100%; height: 450px; spadding-top: 0.5rem;"/>
+			${srcImage}
 			<br>
 			<p text-muted>Year Released: ${yearRelease} </p>
 		</div>
@@ -160,6 +166,21 @@ async function haveSeen(moviedata)
 	{
 		console.log("something went wrong..");
 	});	
+}
+
+function noResults()
+{
+	let content = `
+	<div style="width: 100%; display: flex; justify-content: center;">
+		<div class="alert alert-dismissible alert-danger">
+			<button type="button" class="close" data-dismiss="alert">×</button>
+			<strong>Oh snap!</strong> no results were found matching your criteria! Try something different
+		</div>
+	</div>`;
+
+	$('#loading').fadeOut();
+	$('#result').append(content).hide().fadeIn(); 
+
 }
 
 async function appendMovieCard(moviedata)

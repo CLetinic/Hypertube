@@ -188,13 +188,71 @@ error_reporting(E_ALL);
 				yearRelease = 'N/A';
 
 			// check if there is a movie poster avaliable
-			var srcImage;
-			if (!(result.poster_path === null) || !(result.poster_path === undefined))
-				srcImage = "https://image.tmdb.org/t/p/w342" + result.poster_path;
-			else if (!(result.Poster === 'N/A' || result.Poster === undefined))
-				srcImage = result.Poster;
+			var srcImagePath;
+			if (result.poster_path !== null && result.poster_path !== undefined)
+				srcImagePath = "https://image.tmdb.org/t/p/w342" + result.poster_path;
+			else if (result.Poster !== 'N/A' && result.Poster !== undefined)
+				srcImagePath = result.Poster;
 			else 
-				srcImage = "./images/noImagePoster.svg";
+				srcImagePath = "";
+
+		var srcImage;
+		if (srcImagePath != "")
+			srcImage = `<img src="${srcImagePath}" style="width:100%;"/>`;
+		else 
+			srcImage = `<div><svg
+							xmlns:dc="http://purl.org/dc/elements/1.1/"
+							xmlns:cc="http://creativecommons.org/ns#"
+							xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+							xmlns:svg="http://www.w3.org/2000/svg"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+							xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+							width="342"
+							height="513"
+							viewBox="0 0 90.487498 135.73125"
+							version="1.1"
+							id="svg8"
+							sodipodi:docname="noImagePoster.svg">
+							<g
+								inkscape:label="Layer 1"
+								inkscape:groupmode="layer"
+								id="layer1"
+								transform="translate(0,-161.26873)">
+								<rect
+								style="fill:#5d5d5d;fill-opacity:1;stroke-width:1.23137879"
+								id="rect41"
+								width="90.487503"
+								height="135.73125"
+								x="0"
+								y="161.26872" />
+								<text
+								xml:space="preserve"
+								style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.08429718px;line-height:1.25;font-family:'Yu Gothic';-inkscape-font-specification:'Yu Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25210744"
+								x="46.937805"
+								y="204.47298"
+								id="text25"
+								transform="scale(0.95284703,1.0494864)"><tspan
+									sodipodi:role="line"
+									id="tspan23"
+									x="46.622673"
+									y="204.47298"
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744">IMAGE</tspan><tspan
+									sodipodi:role="line"
+									x="46.622673"
+									y="222.62471"
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744"
+									id="tspan27">NOT</tspan><tspan
+									sodipodi:role="line"
+									x="46.622669"
+									y="240.77644"
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744"
+									id="tspan29">AVALIABLE</tspan></text>
+							</g>
+							</svg>
+							</div>
+							`;
+
 
 			var originalTitle;
 			if (result.title != result.original_title)
@@ -217,36 +275,36 @@ error_reporting(E_ALL);
 					// this is creating a div with the content inside of it
 					content =
 					`<div class="card-header">
-						<h4 id="movieName" class="card-title">`+ result.Title+ `</h4>
-						`+ originalTitle +`
-						<p class="text-muted">(`+ result.Year +`)</p>
+						<h4 id="movieName" class="card-title">${result.Title}</h4>
+						${originalTitle}
+						<p class="text-muted">( ${result.Year} )</p>
 					</div>
 					<div class="card-body">	
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-sm-4 gallery-pad">
-									<img src="` + srcImage + `" style="width:100%;"/>
+									${srcImage}
 									<div class="row IMDb" style="padding: 5px;">
 										<div class="col-sm gallery-pad">
-											<p><i class="fas fa-star"></i> `+ rating +`</p>
+											<p><i class="fas fa-star"></i> ${rating} </p>
 										</div>
 										<div class="vl"></div>
 										<div class="col-sm gallery-pad">
-											<a href="`+ result.imdbURL +`">Go to IMDb Page</a>
+											<a href="${result.imdbURL}">Go to IMDb Page</a>
 										</div>
 									</div>
 								</div>
 								<div class="col-sm-8 gallery-pad">
-									<p><b>Genre:</b> `+genres+`</p>
+									<p><b>Genre: </b>${genres}</p>
 									<br>
-									<p><b>Plot:</b> `+ result.Plot +`</p>
+									<p><b>Plot: </b>${result.Plot}</p>
 									<br>
 									 <center>
 		<div class="col">
 		<div id="target">
 		</div>
 			<button class="btn"><i class="fa fa-download"></i> Download</button> 
-			<button id='importantStream' class="btn" onclick="downloadQuery('`+result.Title+` `+result.Year+`'); isWatched();"><i class="fa fa-tv"></i> Stream</button>
+			<button id='importantStream' class="btn" onclick="downloadQuery('${result.Title + " " + result.Year}'); isWatched();"><i class="fa fa-tv"></i> Stream</button>
 		</div>
 	</center>
 								</div>
@@ -256,13 +314,13 @@ error_reporting(E_ALL);
 								<div class="credit_table">
 									<p><b>Cast:</b><p>
 										<table>
-											<tr>`+ cast +`</tr>
+											<tr>${cast}</tr>
 										</table>
 								</div>
 								<div class="credit_table">
 									<p><b>Crew:<b><p>
 									<table>
-										<tr>`+ crew +`</tr>
+										<tr>${crew}</tr>
 									</table>
 								</div>
 							</div>

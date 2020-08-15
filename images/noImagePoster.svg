@@ -14,68 +14,7 @@
    viewBox="0 0 90.487498 135.73125"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
-   sodipodi:docname="noImagePoster.svg"
-   inkscape:export-filename="C:\Users\bbdnet2135\Desktop\WAMP\apache2\htdocs\HypertubeSearch\noImagePoster.png"
-   inkscape:export-xdpi="256"
-   inkscape:export-ydpi="256">
-  <defs
-     id="defs2" />
-  <sodipodi:namedview
-     id="base"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageopacity="0.0"
-     inkscape:pageshadow="2"
-     inkscape:zoom="1.1476306"
-     inkscape:cx="91.762066"
-     inkscape:cy="189.86021"
-     inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
-     showgrid="false"
-     units="px"
-     showguides="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1001"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
-     inkscape:window-maximized="1"
-     inkscape:guide-bbox="true">
-    <sodipodi:guide
-       position="45.243749,67.865624"
-       orientation="1,0"
-       id="guide4083"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,0,255)" />
-    <sodipodi:guide
-       position="171,256.5"
-       orientation="0,1"
-       id="guide4085"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,0,255)" />
-    <sodipodi:guide
-       position="45.243749,67.865624"
-       orientation="0,1"
-       id="guide4087"
-       inkscape:locked="false"
-       inkscape:label=""
-       inkscape:color="rgb(0,0,255)" />
-  </sodipodi:namedview>
-  <metadata
-     id="metadata5">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
+   sodipodi:docname="noImagePoster.svg">
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"

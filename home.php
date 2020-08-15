@@ -180,7 +180,7 @@ session_start();
 								<h6>Sort</h6>
 								<div id="sortForm" class="form-group row">
 									<div class="custom-control custom-radio col-sm">
-										<input type="radio" id="sortFormRadio1" name="sortFormRadio" class="custom-control-input sort fieldinput" value="" checked="">
+										<input type="radio" id="sortFormRadio1" name="sortFormRadio" class="custom-control-input sort fieldinput" value="None" checked="">
 										<label class="custom-control-label" for="sortFormRadio1"> None </label>
 									</div>
 									<div class="custom-control custom-radio col-sm">
@@ -220,7 +220,7 @@ session_start();
 								<h6>Filter</h6>
 								<div id="filterForm" class="form-group row">
 									<div class="custom-control custom-radio col-sm">
-										<input type="radio" id="filterFormRadio1" name="filterFormRadio" class="custom-control-input filter fieldinput" value="" checked="">
+										<input type="radio" id="filterFormRadio1" name="filterFormRadio" class="custom-control-input filter fieldinput" value="None" checked="">
 										<label class="custom-control-label" for="filterFormRadio1"> None </label>
 									</div>
 									<div class="custom-control custom-radio col-sm">
@@ -372,7 +372,7 @@ $(document).ready(function()
 
 		/* Popular Movies */
 		var actionque;
-		let searchParams = new URLSearchParams(window.location.search)
+		var searchParams = new URLSearchParams(window.location.search)
 
 		if (searchParams.has('search'))
 			actionque = `https://api.themoviedb.org/3/search/movie?query=`+ searchParams.get('search') +`&api_key=4084c07502a720532f5068169281abff`;
@@ -386,22 +386,29 @@ $(document).ready(function()
 		// /* Popular Movies */
 
 		//SEARCH OPTIONS
-		// check for a change in sort or filter radios 
+		// check for a change in sort or filter radios  
 		$("input[type='radio']").click(function()
 		{	
-			if (this.name == "sortFormRadio") //SORT OPTIONS 
-				sort = $("input[name='"+ this.name +"']:checked").val();  //elem.target
-			else if (this.name == "filterFormRadio") //FILTER OPTIONS
-				filter = $("input[name='"+ this.name +"']:checked").val();
+			searchOnFiledInput();
+		});
+
+
+		$('select').on('change', function() {
+			// check if it is the selected field that is being changed
+
+			let filterRadio = ($(this).parent().parent().has($('input[name=filterFormRadio]:checked')).length > 0);
+			let sortRadio = ($(this).parent().parent().has($('input[name=sortFormRadio]:checked')).length > 0);
+			if (filterRadio || sortRadio)
+				searchOnFiledInput();
 		});
 
 		//SEARCH
-		$('.fieldinput').blur(function(event) 
+		$('#searchbar').blur(function(event) 
 		{
 			searchOnFiledInput();
 		});
 
-		$('.fieldinput').keypress(function(event) 
+		$('#searchbar').keypress(function(event) 
 		{
 			if ( event.which == 13 ) // enter
 				searchOnFiledInput();
@@ -412,20 +419,23 @@ $(document).ready(function()
 
 function searchOnFiledInput()
 {
-	console.log("here");
-			$('#result').fadeOut();
-			$('#pagination-container').css("display", "none");
-			$('#loading').fadeOut(50);
-			$('#result').empty();
+	$('#result').fadeOut();
+	$('#pagination-container').css("display", "none");
+	$('#loading').fadeOut(50);
+	$('#result').empty();
+	
+	if (!$('.fieldinput').val() && new URLSearchParams(window.location.search).has('search'))
+		$('.fieldinput').val() = searchParams.get('search');
 
-			var actionque;
-			if ($('.fieldinput').val())
-				actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
-			else
-				actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;			
+	var actionque;
 
-			searchByActionQue(actionque);
-		}
+	if ($('.fieldinput').val())
+		actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
+	else
+		actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;			
+
+	searchByActionQue(actionque);
+}
 
 function searchByActionQue(actionque) 
 {
@@ -484,18 +494,18 @@ function searchByActionQue(actionque)
 
 									getMovieDataPromise(rawdata.results,"search")
 										.then((result) => {
-										//	console.log(result);
-											//result = filterFunction(result, filter);
-											//result = sortFunction(result, sort);	
 
-											console.log('---------------------------');
-											console.log('THIS IS ALL OF EM! ---------------------------');
-											console.log(result);
-											console.log('---------------------------');
+											result = filterFunction(result, $('input[name=filterFormRadio]:checked').val());											
 											
 											$('#result').empty();
 
-											result.forEach(appendMovieCard);										
+											if (result.length > 0){
+												console.log($('input[name=sortFormRadio]:checked').val())
+												result = sortFunction(result, $('input[name=sortFormRadio]:checked').val());
+												result.forEach(appendMovieCard);
+											}
+											else
+												noResults();								
 											
 										});
 							});
