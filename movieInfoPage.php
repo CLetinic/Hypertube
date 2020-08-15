@@ -151,7 +151,7 @@ error_reporting(E_ALL);
 
 	var val = "<?php echo $_GET['id'] ?>";
 	var date = "<?php echo $_GET['date'] ?>";
-	console.log(val);
+
 	if (val)
 	{
 		
@@ -310,22 +310,15 @@ error_reporting(E_ALL);
 								</div>
 
 							</div>
-							<div class="row">
-								<div class="credit_table">
-									<p><b>Cast:</b><p>
-										<table>
-											<tr>${cast}</tr>
-										</table>
-								</div>
-								<div class="credit_table">
-									<p><b>Crew:<b><p>
-									<table>
-										<tr>${crew}</tr>
-									</table>
-								</div>
+							<br/>
+							<div class="row"><h6 class="card-subtitle">Cast</h6></div>
+							<div class="row" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
+								${cast}								
 							</div>
-							<div class="row">
-
+							<br/>
+							<div class="row"><h6 class="card-subtitle">Crew</h6></div>
+							<div class="row" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
+								${crew}
 							</div>
 						</div>
 					</div>`;
@@ -338,16 +331,9 @@ error_reporting(E_ALL);
 			});
 
 	
-		});
-/*
-			
+		});		
 						
-			});
-
-			
-		});
-		*/
-	}
+	}		
 
 	function stringifyGenre(result)
 	{
@@ -377,8 +363,23 @@ error_reporting(E_ALL);
 			if (type == "crew")
 				role = result[i].job;  // ""+ result[i].job +" ("+ result[i].department +")";
 			 
-			content += 
-			"<td><table><tr><div class='cell_name'><b>"+ result[i].name +"</b></div></tr><tr><div class='cell_image'><img src='"+ srcImage +"'/></div></tr><tr><div class='cell_role'><p>"+ role +"</p></div></tr></table></td>";
+			content += `
+				<div style="padding: 4px;">
+					<div class="card border-secondary mb-3" style="width: 10rem;height: 15rem; font-size: 0.75rem;">
+						<div class="card-header" style="font-size: 0.75rem;">
+							<strong>${result[i].name}</strong>							
+							<br/>
+							(${role})
+						</div>
+						<div class="card-body">
+							<img src='${srcImage}'/>
+						</div>
+					</div>
+				</div>
+			`
+
+			
+			//`<td><table><tr><div class='cell_name'><b>${result[i].name}</b></div></tr><tr><div class='cell_image'><img src='${srcImage}'/></div></tr><tr><div class='cell_role'><p>${role}</p></div></tr></table></td>`;
 		}
 
 		return content; 
