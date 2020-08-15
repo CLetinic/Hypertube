@@ -136,7 +136,7 @@ session_start();
 	</style>
 </head>
 <body>
-	<div id="google_translate_element"></div>
+	
 	<div class="topnav" id="myTopnav">
 		<a class="navbar-brand" href="#">
     		<img src="<?php echo $profilep ?>" alt="profile picture" style="width:40px;">
@@ -349,7 +349,11 @@ session_start();
 		  });
 		}
 	</script>
-
+	
+	<footer>
+		<div id="google_translate_element"></div>
+	</footer>
+	
 	</body>
 </html>
 

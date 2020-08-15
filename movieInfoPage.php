@@ -71,51 +71,14 @@ error_reporting(E_ALL);
 		rel="stylesheet" 
 		integrity="sha384-e4EhcNyUDF/kj6ZoPkLnURgmd8KW1B4z9GHYKb7eTG3w3uN8di6EBsN2wrEYr8Gc" 
 		crossorigin="anonymous">
+		
 		<link href="style.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		/* AESTHETIC */
 	</style>
-	<style type="text/css">
-		.vl
-		{
-			width: 1px;
-			background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgb(139, 139, 139) 50%, rgba(0, 0, 0, 0) 100%);
-		}
-		.credit_table
-		{
-			width: 100%;
-			overflow-x: scroll;
-		}
-		.cell_name
-		{
-			height: 45px;
-			padding-bottom: 10px;
-		}
-		.cell_image
-		{
-			height: 90px;
-		}
-		.cell_role
-		{
-			height: 60px;
-			font-size: smaller;
-		}
-		td:nth-child(even) 
-		{
-			background: #222222;
-		}
-		td:nth-child(odd)
-		{
-			background: #282828;
-		}
-		td
-		{
-			padding:0.25%;
-		}
-	</style>
 </head>
 <body>
-	<div id="google_translate_element"></div>
+	
 <div class="topnav" id="myTopnav">
 		<a class="navbar-brand" href="#">
     		<img src="<?php echo $picturep?>" alt="profile picture" style="width:40px;">
@@ -144,6 +107,7 @@ error_reporting(E_ALL);
     </div>
 
     <script type="text/javascript" src="/Hypertube/NODE/public/js/download.js"></script>
+	<div id="google_translate_element"></div>
 </body>
 </html>
 <script src="showMoviehelpers.js"></script>
@@ -311,14 +275,31 @@ error_reporting(E_ALL);
 
 							</div>
 							<br/>
-							<div class="row"><h6 class="card-subtitle">Cast</h6></div>
-							<div class="row" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
-								${cast}								
-							</div>
-							<br/>
-							<div class="row"><h6 class="card-subtitle">Crew</h6></div>
-							<div class="row" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
-								${crew}
+							<div class="row" style"flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;>
+								<ul class="nav nav-tabs">
+									<li class="nav-item">
+										<a class="nav-link" data-toggle="tab" href="#cast">Cast</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active" data-toggle="tab" href="#crew">Crew</a>
+									</li>
+								</ul>
+								<div id="myTabContent" class="tab-content" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
+									<div class="tab-pane fade" id="cast">
+										<div class="container-fluid" >
+											<div class="row" style="flex-wrap: nowrap;">
+											${cast}
+											</div>
+										</div>									
+									</div>
+									<div class="tab-pane fade active show" id="crew">
+									<div class="container-fluid">
+											<div class="row" style="flex-wrap: nowrap;">
+											${crew}
+											</div>
+										</div>	
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>`;
