@@ -1,7 +1,6 @@
 
 async function getMovieDataPromise(result, pageType)
 {
-
 	for(let i = 0; i < result.length; i++) 
 	{
 		let response = await fetch("https://api.themoviedb.org/3/movie/"+ result[i].id +"/external_ids?api_key=4084c07502a720532f5068169281abff");
@@ -19,16 +18,8 @@ async function getMovieDataPromise(result, pageType)
 
 	if(moviedata.Response)
 	{	
-		console.log("moviedata.Response")
+		
 		console.log(result[i])
-		// result[i].imdbID = movie.imdb_id;
-		// result[i].Year = Number((result[i].release_date.split("-"))[0]);
-		// result[i].tmdbURL = "https://www.themoviedb.org/movie/"+ result[i].id +"";
-		// result[i].imdbURL = "https://www.imdb.com/title/"+ result[i].imdbID +"/";
-		// result[i].imdbRating = Number(moviedata.imdbRating);									
-		// result[i].Poster = moviedata.Poster;
-		// result[i].genres = JSON.stringify(result[i].genres);// moviedata.Genre;
-		// result[i].Title = moviedata.Title;		
 		
 		result[i].imdbID = movie.imdb_id ? movie.imdb_id : "N/A"
 		result[i].Year = result[i].release_date ? Number((result[i].release_date.split("-"))[0]) : "N/A";
@@ -118,52 +109,63 @@ async function createMovieCard(moviedata)
 	else
 		originalTitle = ""
 	
+	var viewed = "display:block";
+	viewed = haveSeen(moviedata); 
+
+	content = 
+	`<div id="${moviedata.imdbID}"class="moviecards col-sm-4 card border-secondary sm-3" style="max-width: 20rem; min-width: 20rem; align-items: center; border-color: #9933CC;" onmouseover="movieHoverIn(this)" onmouseout="movieHoverOut(this)" onclick="loadInfo('`+ moviedata.imdbID +`','`+moviedata.Year+`')">
+		<div class="card-header">
+			<h5 class="card-title" style="${titleSize}"> ${moviedata.title} </h5>
+			${originalTitle}
+		</div>
+		<div class="card-body">
+			<div id="${"viewedload" + moviedata.imdbID}" class="progress" style="width: 20.5px;	float: right;">
+				<div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+			</div>
+			<i id="${"viewed" + moviedata.imdbID}" class="far fa-eye" style="float: right; font-size: large; display: none;"></i>
+			<br>
+			<img src="${srcImage}" style="width: 100%; height: 450px; spadding-top: 0.5rem;"/>
+			<br>
+			<p text-muted>Year Released: ${yearRelease} </p>
+		</div>
+		<div class="card-footer">
+			<p><i class="fas fa-star"></i> ${rating} </p>
+			<br>
+			${imdbURL}
+		</div>
+	</div>`;
+
+	return content;	
+}
+		
+async function haveSeen(moviedata)
+{
 	var viewed;
-	var result = "";
 
 	await $.post('checkWatched.php', {movieID:moviedata.imdbID})
 	.done(function( data ) 
 	{
-		if (data > 0)
-			viewed = "display:block;"; 
-		else
-			viewed = "display:none;"; 
+		
+		var idIcon = "#viewed" + moviedata.imdbID;
+		var idLoad = "#viewedload" + moviedata.imdbID;
 
-		// this is creating a div with the content inside of it
-		content = 
-		`<div id="`+ moviedata.imdbID +`"class="moviecards col-sm-4 card border-secondary sm-3" style="max-width: 20rem; min-width: 20rem; align-items: center; border-color: #9933CC;" onmouseover="movieHoverIn(this)" onmouseout="movieHoverOut(this)" onclick="loadInfo('`+ moviedata.imdbID +`','`+moviedata.Year+`')">
-			<div class="card-header">
-				<h5 class="card-title" style="`+ titleSize +`">`+ moviedata.title +`</h5>
-				`+ originalTitle +`
-			</div>
-			<div class="card-body">
-				<i class="far fa-eye" style="float: right; font-size: large; `+ viewed +`"></i>
-				<br>
-				<img src="` + srcImage + `" style="width: 100%; height: 450px; spadding-top: 0.5rem;"/>
-				<br>
-				<p text-muted>Year Released: ` + yearRelease +`</p>
-			</div>
-			<div class="card-footer">
-				<p><i class="fas fa-star"></i> `+ rating +`</p>
-				<br>
-				`+ imdbURL +`
-			</div>
-		</div>`;
-
-		result = content;
-	
-		//$('#result').append(content).hide().fadeIn(); 
+		if (document.getElementById('viewed' + moviedata.imdbID)) 
+		{
+			$(idLoad).fadeOut().hide();
+			if (data > 0)
+				$(idIcon).show();
+		}
 	})
 	.fail(function() 
 	{
 		console.log("something went wrong..");
-	});		
-		
-	return result;	
+	});	
 }
-		
+
 async function appendMovieCard(moviedata)
 {
+	console.log("append");
+	$('#loading').fadeOut();
 	$('#result').append(await createMovieCard(moviedata)).hide().fadeIn(); 
 }
 
@@ -173,25 +175,13 @@ async function createMoviePage(moviedata)
 
 	var pageResult = "";
 	
-	// //await moviedata.forEach(console.log(createMovieCard(element)));
-	// //var pageResult = await moviedata.forEach(element => pageResult += createMovieCard(element));
-
-	// await moviedata.forEach(async function(element) {
-	// 	pageResult += await createMovieCard(element)
-	// })
-
-	// console.log(pageResult);
-	// $('#result').append(pageResult).hide().fadeIn(); 
-
 	for (let index = 0; index < moviedata.length; index++) {
 		const element = moviedata[index];
 		
 		pageResult += await createMovieCard(element);
 	}
 
-	console.log("createMoviePage Result");
-	console.log(pageResult);
 	$('#loading').fadeOut();
 	$('#result').append(pageResult).hide().fadeIn(); 
-	//return pageResult;
+
 }

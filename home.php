@@ -279,9 +279,12 @@ session_start();
   			</div>
 		</div>
 	</div>
-
-	<br />
-	<div class="container-fluid">
+	<!-- <div class="progress-div" style="padding: 15px">
+		<div class="progress">
+			<div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+	</div> -->
+	<div class="container-fluid" style="padding: 15px">
 		<div id="result" class="row">
 			
 		</div>
@@ -368,87 +371,17 @@ $(document).ready(function()
 		var filter;
 
 		/* Popular Movies */
+		var actionque;
+		let searchParams = new URLSearchParams(window.location.search)
 
-		var actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;
+		if (searchParams.has('search'))
+			actionque = `https://api.themoviedb.org/3/search/movie?query=`+ searchParams.get('search') +`&api_key=4084c07502a720532f5068169281abff`;
+		else if ($('.fieldinput').val())
+			actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
+		else
+			actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;
+		
 		searchByActionQue(actionque);
-		// test for pagination
-		// $('#pagination-container').pagination(
-		// 	{
-		// 		dataSource: function(done) 
-		// 		{
-		// 			$.ajax(
-		// 			{
-		// 				type: 'GET',
-		// 				url: actionque,
-		// 				success: function(response) 
-		// 				{
-		// 					$('#loading').fadeIn(50);
-
-		// 					if (!(response.total_results == 0))	
-		// 						$('#pagination-container').css("display", "block");
-
-		// 					let result = [];
-		// 					let totalPage = (response.total_pages * 20); // page size stores 20 items per page
-
-		// 					for (var i = 1; i < totalPage; i++) 
-		// 					{
-		// 						result.push(i);
-		// 					}
-
-		// 					done(result);							
-		// 				}
-		// 			});
-		// 		},
-		// 		pageSize: 20,
-		// 		ajax: 
-		// 		{
-		// 			beforeSend: function() 
-		// 			{
-		// 				console.log('Loading data ...');
-		// 			}
-		// 		},
-		// 		callback: function(data, pagination) 
-		// 		{
-		// 			// template method of yourself
-		// 			if ($('#loading').css('display') == 'none')
-		// 				$('#loading').fadeIn(50);
-					
-
-		// 			async function showMovies(actionque) {
-
-		// 				fetch(actionque).then((response)=>{
-							
-		// 					if (response.status !== 200) {
-		// 						console.log('Error Occured');
-		// 						return;
-		// 					}
-		// 					response.json().then(function(rawdata){
-
-		// 						getMovieDataPromise(rawdata.results,"search")
-		// 							.then((result) => {
-		// 							//		console.log(result);
-		// 									//result = filterFunction(result, filter);
-		// 									//result = sortFunction(result, sort);	
-
-		// 									$('#loading').fadeOut();
-		// 									$('#result').html('');
-
-		// 									result.forEach(createMovieCard);
-											
-		// 							});
-		// 					});
-
-		// 				});
-
-		// 				return 1;
-		// 			}
-
-		// 			showMovies(actionque+`&page=`+ pagination.pageNumber +``);
-
-		// 		}
-		// 	});
-
-
 
 		// /* Popular Movies */
 
@@ -462,15 +395,16 @@ $(document).ready(function()
 				filter = $("input[name='"+ this.name +"']:checked").val();
 		});
 
-		// SEARCH
+		//SEARCH
 		$('.fieldinput').blur(function(event) 
 		{
 			searchOnFiledInput();
 		});
 
-		$('.fieldinput').keydown(function(event) 
+		$('.fieldinput').keypress(function(event) 
 		{
-			searchOnFiledInput();
+			if ( event.which == 13 ) // enter
+				searchOnFiledInput();
 		});
 
 		
@@ -478,16 +412,17 @@ $(document).ready(function()
 
 function searchOnFiledInput()
 {
+	console.log("here");
 			$('#result').fadeOut();
 			$('#pagination-container').css("display", "none");
 			$('#loading').fadeOut(50);
 			$('#result').empty();
-			
-			if ($('.fieldinput').val() == '') {
-				var actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;
-			} else {
-				var actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
-			}
+
+			var actionque;
+			if ($('.fieldinput').val())
+				actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
+			else
+				actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;			
 
 			searchByActionQue(actionque);
 		}
@@ -550,21 +485,17 @@ function searchByActionQue(actionque)
 									getMovieDataPromise(rawdata.results,"search")
 										.then((result) => {
 										//	console.log(result);
-											// result = filterFunction(result, filter);
-											// result = sortFunction(result, sort);	
+											//result = filterFunction(result, filter);
+											//result = sortFunction(result, sort);	
 
 											console.log('---------------------------');
 											console.log('THIS IS ALL OF EM! ---------------------------');
 											console.log(result);
 											console.log('---------------------------');
-
 											
 											$('#result').empty();
 
-											//result.forEach(createMovieCard);
-											//appendMovieCard(result[0]);
-											createMoviePage(result);
-											
+											result.forEach(appendMovieCard);										
 											
 										});
 							});
