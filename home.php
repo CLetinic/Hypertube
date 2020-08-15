@@ -370,86 +370,87 @@ $(document).ready(function()
 		/* Popular Movies */
 
 		var actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;
+		searchByActionQue(actionque);
 		// test for pagination
-		$('#pagination-container').pagination(
-			{
-				dataSource: function(done) 
-				{
-					$.ajax(
-					{
-						type: 'GET',
-						url: actionque,
-						success: function(response) 
-						{
-							$('#loading').fadeIn(50);
+		// $('#pagination-container').pagination(
+		// 	{
+		// 		dataSource: function(done) 
+		// 		{
+		// 			$.ajax(
+		// 			{
+		// 				type: 'GET',
+		// 				url: actionque,
+		// 				success: function(response) 
+		// 				{
+		// 					$('#loading').fadeIn(50);
 
-							if (!(response.total_results == 0))	
-								$('#pagination-container').css("display", "block");
+		// 					if (!(response.total_results == 0))	
+		// 						$('#pagination-container').css("display", "block");
 
-							let result = [];
-							let totalPage = (response.total_pages * 20); // page size stores 20 items per page
+		// 					let result = [];
+		// 					let totalPage = (response.total_pages * 20); // page size stores 20 items per page
 
-							for (var i = 1; i < totalPage; i++) 
-							{
-								result.push(i);
-							}
+		// 					for (var i = 1; i < totalPage; i++) 
+		// 					{
+		// 						result.push(i);
+		// 					}
 
-							done(result);							
-						}
-					});
-				},
-				pageSize: 20,
-				ajax: 
-				{
-					beforeSend: function() 
-					{
-						console.log('Loading data ...');
-					}
-				},
-				callback: function(data, pagination) 
-				{
-					// template method of yourself
-					if ($('#loading').css('display') == 'none')
-						$('#loading').fadeIn(50);
+		// 					done(result);							
+		// 				}
+		// 			});
+		// 		},
+		// 		pageSize: 20,
+		// 		ajax: 
+		// 		{
+		// 			beforeSend: function() 
+		// 			{
+		// 				console.log('Loading data ...');
+		// 			}
+		// 		},
+		// 		callback: function(data, pagination) 
+		// 		{
+		// 			// template method of yourself
+		// 			if ($('#loading').css('display') == 'none')
+		// 				$('#loading').fadeIn(50);
 					
 
-					async function showMovies(actionque) {
+		// 			async function showMovies(actionque) {
 
-						fetch(actionque).then((response)=>{
+		// 				fetch(actionque).then((response)=>{
 							
-							if (response.status !== 200) {
-								console.log('Error Occured');
-								return;
-							}
-							response.json().then(function(rawdata){
+		// 					if (response.status !== 200) {
+		// 						console.log('Error Occured');
+		// 						return;
+		// 					}
+		// 					response.json().then(function(rawdata){
 
-								getMovieDataPromise(rawdata.results,"search")
-									.then((result) => {
-									//		console.log(result);
-											result = filterFunction(result, filter);
-											result = sortFunction(result, sort);	
+		// 						getMovieDataPromise(rawdata.results,"search")
+		// 							.then((result) => {
+		// 							//		console.log(result);
+		// 									//result = filterFunction(result, filter);
+		// 									//result = sortFunction(result, sort);	
 
-											$('#loading').fadeOut();
-											$('#result').html('');
+		// 									$('#loading').fadeOut();
+		// 									$('#result').html('');
 
-											result.forEach(createMovieCard);
+		// 									result.forEach(createMovieCard);
 											
-									});
-							});
+		// 							});
+		// 					});
 
-						});
+		// 				});
 
-						return 1;
-					}
+		// 				return 1;
+		// 			}
 
-					showMovies(actionque+`&page=`+ pagination.pageNumber +``);
+		// 			showMovies(actionque+`&page=`+ pagination.pageNumber +``);
 
-				}
-			});
+		// 		}
+		// 	});
 
 
 
-		/* Popular Movies */
+		// /* Popular Movies */
 
 		//SEARCH OPTIONS
 		// check for a change in sort or filter radios 
@@ -480,6 +481,7 @@ function searchOnFiledInput()
 			$('#result').fadeOut();
 			$('#pagination-container').css("display", "none");
 			$('#loading').fadeOut(50);
+			$('#result').empty();
 			
 			if ($('.fieldinput').val() == '') {
 				var actionque = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4084c07502a720532f5068169281abff`;
@@ -487,7 +489,12 @@ function searchOnFiledInput()
 				var actionque = `https://api.themoviedb.org/3/search/movie?query=`+ $('#searchbar').val() +`&api_key=4084c07502a720532f5068169281abff`;
 			}
 
-			$('#pagination-container').pagination(
+			searchByActionQue(actionque);
+		}
+
+function searchByActionQue(actionque) 
+{
+	$('#pagination-container').pagination(
 			{
 				dataSource: function(done) 
 				{
@@ -532,7 +539,6 @@ function searchOnFiledInput()
 
 					async function showMovies(actionque) {
 
-
 						fetch(actionque).then((response)=>{
 							
 							if (response.status !== 200) {
@@ -544,17 +550,21 @@ function searchOnFiledInput()
 									getMovieDataPromise(rawdata.results,"search")
 										.then((result) => {
 										//	console.log(result);
-											result = filterFunction(result, filter);
-											result = sortFunction(result, sort);	
+											// result = filterFunction(result, filter);
+											// result = sortFunction(result, sort);	
 
 											console.log('---------------------------');
+											console.log('THIS IS ALL OF EM! ---------------------------');
 											console.log(result);
 											console.log('---------------------------');
 
-											$('#loading').fadeOut();
-											$('#result').html('');
+											
+											$('#result').empty();
 
-											result.forEach(createMovieCard);
+											//result.forEach(createMovieCard);
+											//appendMovieCard(result[0]);
+											createMoviePage(result);
+											
 											
 										});
 							});
@@ -567,7 +577,7 @@ function searchOnFiledInput()
 					showMovies(actionque+`&page=`+ pagination.pageNumber +``);
 				}
 			});
-		}
+}
 
 function getSortID(sortType)
 {
