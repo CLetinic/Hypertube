@@ -119,7 +119,7 @@ async function createMovieCard(moviedata)
 	viewed = haveSeen(moviedata); 
 
 	content = 
-	`<div id="${moviedata.imdbID}"class="moviecards col-sm-4 card border-secondary sm-3" style="max-width: 20rem; min-width: 20rem; align-items: center; border-color: #9933CC;" onmouseover="movieHoverIn(this)" onmouseout="movieHoverOut(this)" onclick="loadInfo('`+ moviedata.imdbID +`','`+moviedata.Year+`')">
+	`<div id="${moviedata.imdbID}"class="moviecards col-sm-4 card border-secondary sm-3" style="max-width: 20rem; min-width: 20rem; align-items: center; border-color: #9933CC; margin-top: 20px; margin-bottom: 20px;" onmouseover="movieHoverIn(this)" onmouseout="movieHoverOut(this)" onclick="loadInfo('`+ moviedata.imdbID +`','`+moviedata.Year+`')">
 		<div class="card-header">
 			<h5 class="card-title" style="${titleSize}"> ${moviedata.title} </h5>
 			${originalTitle}

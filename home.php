@@ -42,47 +42,6 @@ session_start();
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/Hypertube/favicon/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<style>
-	.paginationjs .paginationjs-pages li
-	{
-		background-color: #272727;
-		border: none;
-	}
-	.paginationjs .paginationjs-pages li>a
-	{
-		background-color: #272727;
-		color: white;
-		border: none;		
-		outline: none;
-		height: 30px;
-		line-height: 30px;
-	}
-	.paginationjs .paginationjs-pages li>a:hover
-	{
-		background-color: #9933CC;
-		border: none;		
-		outline: none;
-		line-height: 25px;
-	}
-	.paginationjs .paginationjs-pages li.active>a
-	{
-		background-color: #9933CC;
-		color: white
-		border: none;		
-		outline: none;
-	}
-	.disabled
-	{
-		color: #888888;
-		border: none;		
-		outline: none;
-	}
-	.paginationjs .paginationjs-pages li:last-child
-	{
-		
-	}
-	
-</style>
 	<script type="text/javascript" src="sort.js"></script>
 	<script type="text/javascript" src="filter.js"></script>
 	<script 
@@ -109,11 +68,7 @@ session_start();
 		href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
 		integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" 
 		crossorigin="anonymous">
-	<link 
-		href="https://stackpath.bootstrapcdn.com/bootswatch/4.2.1/cyborg/bootstrap.min.css" 
-		rel="stylesheet" 
-		integrity="sha384-e4EhcNyUDF/kj6ZoPkLnURgmd8KW1B4z9GHYKb7eTG3w3uN8di6EBsN2wrEYr8Gc" 
-		crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cyborg/bootstrap.min.css" integrity="sha384-nEnU7Ae+3lD52AK+RGNzgieBWMnEfgTbRHIwEvp1XXPdqdO6uLTd/NwXbzboqjc2" crossorigin="anonymous">
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<!-- Pagination -->
 	<link 
@@ -135,8 +90,25 @@ session_start();
 		/* AESTHETIC */
 	</style>
 </head>
-<body>
-	
+<body>	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#" class="display: flex; justify-content: center;"><img src="./images/logo.svg" alt="logo" height="70%" width="70%"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<a class="navbar-brand" href="#">
+    		<img src="<?php echo $profilep ?>" alt="profile picture" style="width:40px;">
+	</a>
+	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+		<?php echo $username ?>
+	</a>
+	<div class="dropdown-menu">
+		<a class="dropdown-item" href="./profile.php">My Profile</a>
+		<a class="dropdown-item" href="./logout.php">Logout</a>
+	</div>
+
+	</nav>
 	<div class="topnav" id="myTopnav">
 		<a class="navbar-brand" href="#">
     		<img src="<?php echo $profilep ?>" alt="profile picture" style="width:40px;">
@@ -151,7 +123,7 @@ session_start();
 
 		<center>
 		<div class="topnav-centered">
-			<a href="#"><img src="logo.png" alt="logo" height="70%" width="70%"></a>
+			<a href="#"><img src="./images/logo.svg" alt="logo" height="70%" width="70%"></a>
 		</div>
 		</center>
 		<button class="dropdown-btn" style="float: right;">
@@ -294,7 +266,7 @@ session_start();
 		</div>
 		
 		<div class="row">
-			<div id="pagination-container" style="display: block; margin: auto; padding: 2%;"></div></div>
+			<div id="pagination-container" style="display: block; margin: auto; padding: 2%;"></div>
 		</div>	
 	</div>
 
@@ -349,7 +321,7 @@ session_start();
 		  });
 		}
 	</script>
-	
+
 	<footer>
 		<div id="google_translate_element"></div>
 	</footer>
@@ -425,6 +397,7 @@ function searchOnFiledInput()
 {
 	$('#result').fadeOut();
 	$('#pagination-container').css("display", "none");
+	$('#pagination-container').empty();
 	$('#loading').fadeOut(50);
 	$('#result').empty();
 	
@@ -519,7 +492,9 @@ function searchByActionQue(actionque)
 						return 1;
 					}		
 					
-					showMovies(actionque+`&page=`+ pagination.pageNumber +``);
+					console.log("pagination num")
+					console.log(pagination.pageNumber)
+					showMovies(actionque +`&page=`+ pagination.pageNumber +``);
 				}
 			});
 }
