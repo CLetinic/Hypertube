@@ -35,9 +35,9 @@ $pp = $data['picture'];
 <link rel="icon" type="image/png" sizes="96x96" href="/Hypertube/favicon/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/Hypertube/favicon/favicon-16x16.png">
 <link rel="manifest" href="/Hypertube/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileColor" content="var(--white)fff">
 <meta name="msapplication-TileImage" content="/Hypertube/favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="var(--white)fff">
 
 	<script type="text/javascript" src="sort.js"></script>
 	<script type="text/javascript" src="filter.js"></script>

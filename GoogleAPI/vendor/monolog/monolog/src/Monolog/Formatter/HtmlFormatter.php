@@ -25,7 +25,7 @@ class HtmlFormatter extends NormalizerFormatter
      * Translates Monolog log levels to html color priorities.
      */
     protected $logLevels = array(
-        Logger::DEBUG     => '#cccccc',
+        Logger::DEBUG     => 'var(--dark)ccc',
         Logger::INFO      => '#468847',
         Logger::NOTICE    => '#3a87ad',
         Logger::WARNING   => '#c09853',
@@ -58,7 +58,7 @@ class HtmlFormatter extends NormalizerFormatter
             $td = '<pre>'.htmlspecialchars($td, ENT_NOQUOTES, 'UTF-8').'</pre>';
         }
 
-        return "<tr style=\"padding: 4px;spacing: 0;text-align: left;\">\n<th style=\"background: #cccccc\" width=\"100px\">$th:</th>\n<td style=\"padding: 4px;spacing: 0;text-align: left;background: #eeeeee\">".$td."</td>\n</tr>";
+        return "<tr style=\"padding: 4px;spacing: 0;text-align: left;\">\n<th style=\"background: var(--dark)ccc\" width=\"100px\">$th:</th>\n<td style=\"padding: 4px;spacing: 0;text-align: left;background: #eeeeee\">".$td."</td>\n</tr>";
     }
 
     /**
@@ -72,7 +72,7 @@ class HtmlFormatter extends NormalizerFormatter
     {
         $title = htmlspecialchars($title, ENT_NOQUOTES, 'UTF-8');
 
-        return '<h1 style="background: '.$this->logLevels[$level].';color: #ffffff;padding: 5px;" class="monolog-output">'.$title.'</h1>';
+        return '<h1 style="background: '.$this->logLevels[$level].';color: var(--white)fff;padding: 5px;" class="monolog-output">'.$title.'</h1>';
     }
 
     /**

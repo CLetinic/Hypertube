@@ -60,7 +60,7 @@ if ($_POST['email'] && $_POST['username'] && $_POST['password'] && $_POST['passw
 	$htmlStr = "";
 	$htmlStr .= "Hi " . $email . ",<br /><br />";
 	$htmlStr .= "Please click the button below to verify your account and have access to the Hypertube website.<br /><br /><br />";
-	$htmlStr .= "<a href='{$verificationLink}' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:#fff;'>VERIFY EMAIL</a><br /><br /><br />";
+	$htmlStr .= "<a href='{$verificationLink}' target='_blank' style='padding:1em; font-weight:bold; background-color:blue; color:var(--white);'>VERIFY EMAIL</a><br /><br /><br />";
 	$htmlStr .= "Kind regards,<br />";
 	$htmlStr .= "<a href='http://localhost:8080/hypertube/' target='_blank'>Hypertube</a><br />";
 	$name = "Hypertube";

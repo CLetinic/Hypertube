@@ -173,7 +173,7 @@ class BrowserConsoleHandler extends AbstractProcessingHandler
 
     private static function handleCustomStyles($style, $string)
     {
-        static $colors = array('blue', 'green', 'red', 'magenta', 'orange', 'black', 'grey');
+        static $colors = array('blue', 'green', 'red', 'magenta', 'orange', 'black', 'var(--grey)');
         static $labels = array();
 
         return preg_replace_callback('/macro\s*:(.*?)(?:;|$)/', function ($m) use ($string, &$colors, &$labels) {

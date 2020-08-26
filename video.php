@@ -38,9 +38,9 @@ $username = $data['username'];
 <link rel="icon" type="image/png" sizes="96x96" href="/Hypertube/favicon/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/Hypertube/favicon/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileColor" content="var(--white)fff">
 <meta name="msapplication-TileImage" content="/Hypertube/favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="var(--white)fff">
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +80,7 @@ $username = $data['username'];
 	<style>
 		body {
 		  font-family: Arial;
-		  background-color: rgb(66, 66, 68);
+		  background-color: var(--gray-dark);
 		}
 		
 		* {
@@ -90,10 +90,10 @@ $username = $data['username'];
 		form.example input[type=text] {
 		  padding: 10px;
 		  font-size: 17px;
-		  border: 1px solid grey;
+		  border: 1px solid var(--grey);
 		  float: left;
 		  width: 50%;
-		  background: #333;
+		  background: var(--gray-dark);
 		  color: white;
 		  margin-top: 3px;
 		}
@@ -103,16 +103,16 @@ $username = $data['username'];
 		  margin-top: 3px;
 		  width: 10%;
 		  padding: 10px;
-		  background: grey;
+		  background: var(--grey);
 		  color: white;
 		  font-size: 17px;
-		  border: 1px solid grey;
+		  border: 1px solid var(--grey);
 		  border-left: none;
 		  cursor: pointer;
 		}
 		
 		form.example button:hover {
-		  background: rgb(66, 66, 68);
+		  background: var(--gray-dark);
 		}
 		
 		form.example::after {
@@ -123,12 +123,12 @@ $username = $data['username'];
 		
 		.topnav {
 		  overflow: hidden;
-		  background-color: #333;
+		  background-color: var(--gray-dark);
 		}
 
 		.topnav {
 		  overflow: hidden;
-		  background-color: #333;
+		  background-color: var(--gray-dark);
 		}
 
 		.topnav a {
@@ -142,11 +142,11 @@ $username = $data['username'];
 		}
 
 		.topnav a:hover {
-		  background-color: rgb(66, 66, 68);
+		  background-color: var(--gray-dark);
 		}
 
 		.active {
-		  background-color: grey;
+		  background-color: var(--grey);
 		  color: white;
 		}
 
@@ -183,7 +183,7 @@ $username = $data['username'];
 		  z-index: 1;
 		  top: 0;
 		  left: 0;
-		  background-color: #333;
+		  background-color: var(--gray-dark);
 		  overflow-x: hidden;
 		  transition: 0.5s;
 		  padding-top: 60px;
@@ -259,7 +259,7 @@ $username = $data['username'];
 		}
 
 		.btn {
-		  background-color: grey;
+		  background-color: var(--grey);
 		  border: none;
 		  color: white;
 		  padding: 12px 30px;
@@ -269,11 +269,11 @@ $username = $data['username'];
 
 		/* Darker background on mouse-over */
 		.btn:hover {
-		  background-color: #333;
+		  background-color: var(--gray-dark);
 		}
 
 		hr {
-			background-color: grey;
+			background-color: var(--grey);
 			color: red;
 		}
 	</style>
@@ -292,7 +292,7 @@ $username = $data['username'];
 				  <form action="user/commentinfo.php?torrent_id=<?php echo $torrent_id.'&title='.$movie_title; ?>" method=POST id="commentform" accept-charset="UTF-8">
 					<center>
 
-							<textarea rows="4" style="background-color: #333; color: white; width: 97.5vw; box-sizing: border-box; margin-left: auto; margin-right: auto;" name="comment_text" form="commentform" required placeholder="Hey, say something :D (max chars:255)"></textarea>
+							<textarea rows="4" style="background-color: var(--gray-dark); color: white; width: 97.5vw; box-sizing: border-box; margin-left: auto; margin-right: auto;" name="comment_text" form="commentform" required placeholder="Hey, say something :D (max chars:255)"></textarea>
 							<button class="btn" style="width: 97.5vw; box-sizing: border-box;" type="submit" name="submit" required>comment</button>
 
 					</center>

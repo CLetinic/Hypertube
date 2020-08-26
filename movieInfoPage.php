@@ -36,9 +36,9 @@ error_reporting(E_ALL);
 <link rel="icon" type="image/png" sizes="96x96" href="/Hypertube/favicon/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/Hypertube/favicon/favicon-16x16.png">
 <link rel="manifest" href="/Hypertube/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileColor" content="var(--white)">
 <meta name="msapplication-TileImage" content="/Hypertube/favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="var(--white)">
 
 	<script type="text/javascript" src="sort.js"></script>
 	<script type="text/javascript" src="filter.js"></script>
@@ -188,7 +188,7 @@ error_reporting(E_ALL);
 								y="161.26872" />
 								<text
 								xml:space="preserve"
-								style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.08429718px;line-height:1.25;font-family:'Yu Gothic';-inkscape-font-specification:'Yu Gothic';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.25210744"
+								style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.08429718px;line-height:1.25;font-family:'Yu Gothic';-inkscape-font-specification:'Yu Gothic';letter-spacing:0px;word-spacing:0px;fill:var(--white);fill-opacity:1;stroke:none;stroke-width:0.25210744"
 								x="46.937805"
 								y="204.47298"
 								id="text25"
@@ -197,16 +197,16 @@ error_reporting(E_ALL);
 									id="tspan23"
 									x="46.622673"
 									y="204.47298"
-									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744">IMAGE</tspan><tspan
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:var(--white);fill-opacity:1;stroke-width:0.25210744">IMAGE</tspan><tspan
 									sodipodi:role="line"
 									x="46.622673"
 									y="222.62471"
-									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744"
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:var(--white);fill-opacity:1;stroke-width:0.25210744"
 									id="tspan27">NOT</tspan><tspan
 									sodipodi:role="line"
 									x="46.622669"
 									y="240.77644"
-									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:0.25210744"
+									style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.10115719px;line-height:1.5;font-family:'Microsoft Sans Serif';-inkscape-font-specification:'Microsoft Sans Serif Bold';text-align:center;letter-spacing:-0.63026857px;text-anchor:middle;fill:var(--white)fff;fill-opacity:1;stroke-width:0.25210744"
 									id="tspan29">AVALIABLE</tspan></text>
 							</g>
 							</svg>

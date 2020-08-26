@@ -178,8 +178,9 @@ Hypertube
 │   │   ├── hypertube.en.pdf                 # Project Brief
 │   │   └── hypertube.markingsheet.pdf       # Project Marking Sheet
 │   └── images
-│       └── MAMP
-│           └── ...                          # README - Server Setup
+│       ├── MAMP
+│       │   └── ...                          # README - Server Setup Images
+│       └── ...                              # README - Project Screen Shots
 ├── NODE
 │   ├── app.js                               # Back-end - Torrent logic - Script to serve with Node
 │   └── ...                                  # Back-end - Torrent logic - Uses Node.js

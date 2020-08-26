@@ -40,9 +40,9 @@ if (isset($_GET['err']))
 <link rel="icon" type="image/png" sizes="96x96" href="/Hypertube/favicon/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/Hypertube/favicon/favicon-16x16.png">
 <link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileColor" content="var(--white)fff">
 <meta name="msapplication-TileImage" content="/Hypertube/favicon/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="var(--white)fff">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {box-sizing: border-box}
@@ -56,8 +56,8 @@ body, html {
 
 /* Style tab links */
 .tablink {
-  background-color: rgb(66, 66, 68);
-  color: white;
+  background-color: var(--gray-dark);
+  color: var(--white);
   float: left;
   border: none;
   outline: none;
@@ -68,12 +68,12 @@ body, html {
 }
 
 .tablink:hover {
-  background-color: grey;
+  background-color: var(--grey);
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
+  color: var(--white);
   display: none;
   padding: 100px 20px;
   height: 100%;
@@ -82,7 +82,7 @@ body, html {
 /* style the container */
 .container {
   position: relative;
-  background-color: grey;
+  background-color: var(--grey);
   padding: 20px 0 30px 0;
 } 
 
@@ -109,28 +109,28 @@ input:hover,
 /* add appropriate colors to fb, twitter and google buttons */
 .fb {
   background-color: #3B5998;
-  color: white;
+  color: var(--white);
 }
 
 .twitter {
   background-color: #55ACEE;
-  color: white;
+  color: var(--white);
 }
 
 .google {
   background-color: #dd4b39;
-  color: white;
+  color: var(--white);
 }
 
 /* style the submit button */
 input[type=submit] {
-  background-color: rgb(66, 66, 68);
-  color: white;
+  background-color: var(--gray-dark);
+  color: var(--white);
   cursor: pointer;
 }
 
 input[type=submit]:hover {
-  background-color: rgb(66, 66, 68);
+  background-color: var(--gray-dark);
 }
 
 /* Two-column layout */
@@ -140,7 +140,7 @@ input[type=submit]:hover {
   margin: auto;
   padding: 0 50px;
   margin-top: 6px;
-  background-color: grey; /*change second background*/
+  background-color: var(--grey); /*change second background*/
 }
 
 /* Clear floats after the columns */
@@ -164,8 +164,8 @@ input[type=submit]:hover {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: grey; /*change middle or*/
-  border: 1px solid #ccc;
+  background-color: var(--grey); /*change middle or*/
+  border: 1px solid var(--dark);
   border-radius: 50%;
   padding: 8px 10px;
 }
@@ -207,8 +207,8 @@ select
   }
 }
 
-#Sign-in {background-color: rgb(66, 66, 68);}
-#Sign-up {background-color: rgb(66, 66, 68);}
+#Sign-in {background-color: var(--gray-dark);}
+#Sign-up {background-color: var(--gray-dark);}
 
 </style>
 </head>
@@ -256,7 +256,7 @@ select
 <div class="bottom-container">
   <div class="row">
 	<div class="col">
-	  <a href="#" style="color:white" class="btn">Sign-up</a>
+	  <a href="#" style="color:var(--white)" class="btn">Sign-up</a>
 	</div>
 	<div class="col">
 	  <a href="#" style="color:white" class="btn">Forgot password?</a>
@@ -307,10 +307,10 @@ select
 <div class="bottom-container">
   <div class="row">
 	<div class="col">
-	  <a href="#" style="color:white" class="btn">Sign-in</a>
+	  <a href="#" style="color:var(--white)" class="btn">Sign-in</a>
 	</div>
 	<div class="col">
-	  <a href="#" style="color:white" class="btn">Forgot password?</a>
+	  <a href="#" style="color:var(--white)" class="btn">Forgot password?</a>
 	</div>
   </div>
 </div>
@@ -364,7 +364,7 @@ require_once("setup.php");
 
 // if (isset($_GET['email']))
 // {
-//   echo '<div background-color="white">';
+//   echo '<div background-color="var(--white)">';
 //   echo '<b> Check your email to verify your account </b>';
 //   echo '</div>';
 // }

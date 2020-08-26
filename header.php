@@ -51,19 +51,19 @@
 		input
 		{
 			text-align: center;
-			color: #888888;
+			color: var(--dark);
 			outline: none;
 			display: block;
 			border: none;
 			background: transparent;
-			border-bottom: 1px solid #888888;
+			border-bottom: 1px solid var(--dark);
 		}
 
 		input:focus
 		{
 			color: white;
 			outline: none;
-			border-bottom: 2px solid #9933CC;
+			border-bottom: 2px solid var(--info);
 		}
 		button:focus
 		{
@@ -71,7 +71,7 @@
 		}
 		#searchText
 		{
-			color: #888888;
+			color: var(--dark);
 			border: none;
 			outline: none;
 			background: none;
