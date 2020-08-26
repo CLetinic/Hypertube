@@ -1,4 +1,4 @@
-# Hypertube 
+<img src="./images/logo_DarkBack.svg" width="100%">
 
 Hypertube is a mock/clone movie streaming site where users can search for movies that they can either stream or download.  
 
