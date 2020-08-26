@@ -272,7 +272,7 @@ error_reporting(E_ALL);
 							</div>
 							<br/>
 							<div class="row" style"flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;>
-								<ul class="nav nav-tabs">
+								<ul class="nav nav-tabs" style="width: 100%;">
 									<li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#cast">Cast</a>
 									</li>
@@ -281,14 +281,14 @@ error_reporting(E_ALL);
 									</li>
 								</ul>
 								<div id="myTabContent" class="tab-content" style="flex-wrap: nowrap; flex-direction: row; overflow-x: scroll;">
-									<div class="tab-pane fade" id="cast">
+									<div class="tab-pane fade active show" id="cast">
 										<div class="container-fluid" >
 											<div class="row" style="flex-wrap: nowrap;">
 											${cast}
 											</div>
 										</div>									
 									</div>
-									<div class="tab-pane fade active show" id="crew">
+									<div class="tab-pane fade" id="crew">
 									<div class="container-fluid">
 											<div class="row" style="flex-wrap: nowrap;">
 											${crew}

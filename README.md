@@ -53,6 +53,7 @@ Start the Node server
 
 ```
 cd [Insert path to your MAMP/ WAMP / LAMP Directory ]/apache2/htdocs/Hypertube/NODE
+npm install
 node app.js
 ```
 
@@ -93,8 +94,35 @@ In the browser, navigate to
 [http://localhost:8080/Hypertube/setup.php](http://localhost:8080/Hypertube/setup.php )
 
 # Samples | Screenshots
-## Landing | Home page  
-<!-- ![Screenshot_Landingpage](./misc/images/) -->
+## Sign In | Sign Up 
+![Server](./misc/images/ScreenShot_SignIn.png)
+
+## Search Page
+Search page by default show the most popular movies
+![Server](./misc/images/ScreenShot_0.png)
+
+User is able to Search, Filter and Sort
+![Server](./misc/images/ScreenShot_0_search.png)
+
+Search
+![Server](./misc/images/ScreenShot_1.png)
+
+## Movie Page
+Information | Cast
+![Server](./misc/images/ScreenShot_2.png)
+
+Crew
+> NOTE - Here the stream is buffering to at least 10% - Hence the "Pending" 
+
+![Server](./misc/images/ScreenShot_3.png)
+
+This is on the NODE server when the user clicks stream or download. 
+> NOTE - Only at 10% and aboce will the stream become available
+
+![Server](./misc/images/ScreenShot_5.png)
+
+The movie available to stream
+![Server](./misc/images/ScreenShot_6.png)
 
 # APIs Used
 ## Movie APIs
@@ -153,7 +181,8 @@ Hypertube
 │       └── MAMP
 │           └── ...                          # README - Server Setup
 ├── NODE
-│   └── ...                                  # Back-end - Torrent logic - Uses Node
+│   ├── app.js                               # Back-end - Torrent logic - Script to serve with Node
+│   └── ...                                  # Back-end - Torrent logic - Uses Node.js
 ├── user
 │   └── commentinfo.php                      # Back-End - User Comments
 ├── 42-callback.php                          # OAuthentication - 42 | WeThinkCode_
@@ -175,5 +204,3 @@ Hypertube
 - **[Simbiso Marwise](https://github.com/smarwise)**
 - **[Takalani Madau](https://github.com/tmadau)**
 <!-- - **[Sithembile Mabunda]()** -->
-
-

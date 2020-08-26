@@ -287,4 +287,6 @@ select
 	outline: none;
 }
 
-  
+.nav-tabs .nav-link.active, .nav-pills .nav-link.active {
+    background-color: #9933CC;
+}
