@@ -91,7 +91,7 @@ session_start();
 	</style>
 </head>
 <body>	
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#" class="display: flex; justify-content: center;"><img src="./images/logo.svg" alt="logo" height="70%" width="70%"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -108,7 +108,7 @@ session_start();
 		<a class="dropdown-item" href="./logout.php">Logout</a>
 	</div>
 
-	</nav>
+	</nav> -->
 	<div class="topnav" id="myTopnav">
 		<a class="navbar-brand" href="#">
     		<img src="<?php echo $profilep ?>" alt="profile picture" style="width:40px;">
