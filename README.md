@@ -82,7 +82,7 @@ Browse to site location
 
 In [Insert path to your MAMP/ WAMP / LAMP Directory ]/apache2/htdocs/Hypertube/setup.php  
 
-Change the password of `$password`, to the password chosen during the installation of bitnami server - myphpAdmin password.
+Change the password of `$password`, to the password chosen during the installation of bitnami server - phpMyAdmin password.
 
 ![Database_Configuration](./misc/images/MAMP/DBSETUP.png)
 
